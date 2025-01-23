@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+      rel="stylesheet"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgb(253, 253, 246);
+      }
+
+      .center {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .menu {
+        width: fit-content;
+        height: fit-content;
+        position: relative;
+      }
+
+      .menu-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 0.3mm solid rgba(0, 0, 0, 0.096);
+        position: relative;
+        cursor: pointer;
+      }
+
+      .menu-btn::before {
+        position: absolute;
+        content: "more_vert";
+        font-family: "Material Symbols Outlined";
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 50%;
+        font-size: 30px;
+        text-align: center;
+        line-height: 40px;
+      }
+      .menu-list {
+        position: absolute;
+        top: 45px;
+        left: 0;
+        height: fit-content;
+        background: rgb(237, 241, 228);
+        border-radius: 1mm;
+        box-sizing: border-box;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.15),
+          0 1px 3px 1px rgba(0, 0, 0, 0.1);
+      }
+
+      .menu-item {
+        width: 170px;
+        display: flex;
+        justify-content: flex-start;
+        padding: 10px;
+        box-sizing: border-box;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      .menu-item span {
+        font-size: 24px;
+        margin-right: 5px;
+      }
+      .menu-item:hover {
+        background: rgb(224, 229, 215);
+      }
+
+      .sub-item {
+        position: relative;
+      }
+
+      .sub-item::before {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        content: "arrow_right";
+        font-family: "Material Symbols Outlined";
+        font-size: 24px;
+        transform: translate(0, -50%);
+      }
+
+      .sub-item .menu-list {
+        left: 100%;
+        top: 0;
+        display: none;
+      }
+      .sub-item:hover .menu-list {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="center">
+      <div class="menu">
+        <div class="menu-btn"></div>
+        <div class="menu-list" id="menu">
+          <div class="menu-item">
+            <div class="icon">
+              <span class="material-symbols-outlined"> home </span>
+            </div>
+            <div class="name">Item 1</div>
+          </div>
+          <div class="menu-item">
+            <div class="icon">
+              <span class="material-symbols-outlined"> favorite </span>
+            </div>
+            <div class="name">Item 2</div>
+          </div>
+          <div class="menu-item sub-item">
+            <div class="icon">
+              <span class="material-symbols-outlined"> account_circle </span>
+            </div>
+            <div class="name">Item 3</div>
+            <div class="menu-list">
+              <div class="menu-item">
+                <div class="icon">
+                  <span class="material-symbols-outlined"> delete </span>
+                </div>
+                <div class="name">Item 4</div>
+              </div>
+              <div class="menu-item">
+                <div class="icon">
+                  <span class="material-symbols-outlined"> logout </span>
+                </div>
+                <div class="name">Item 5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var menuBtn = document.querySelector(".menu-btn");
+      var menu = document.getElementById("menu")
+      window.addEventListener("click", (e) => {
+        if (e.target == menuBtn) {
+            menu.style.display = "flex"
+        } else {
+            menu.style.display = "none"
+        }});
+    </script>
+  </body>
+</html>
