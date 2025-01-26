@@ -139,6 +139,25 @@
         font-size: small;
         margin-bottom: 10px;
       }
+
+      .search-box {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 8px;
+      }
+      #search {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px;
+        border-radius: 1mm;
+        border: none;
+        outline: 0.3mm solid rgba(0, 0, 0, 0.15);
+      }
+
+      #search:focus {
+        outline: 0.5mm solid rgba(0, 0, 0, 0.35);
+      }
     </style>
   </head>
   <body>
@@ -147,6 +166,15 @@
         <div class="title">Title</div>
         <div class="input-box"></div>
         <div class="list">
+          <div class="search-box">
+            <input
+              type="search"
+              name=""
+              id="search"
+              placeholder="Search options"
+              oninput="search(this)"
+            />
+          </div>
           <input type="radio" name="drop1" id="id11" class="radio" />
           <label for="id11">
             <span class="material-symbols-outlined"> directions_walk </span>
@@ -169,6 +197,18 @@
           <label for="id14">
             <span class="material-symbols-outlined"> flight </span>
             <span class="name">Flight</span>
+          </label>
+
+          <input type="radio" name="drop1" id="id15" class="radio" />
+          <label for="id15">
+            <span class="material-symbols-outlined"> directions_boat </span>
+            <span class="name">Ship</span>
+          </label>
+
+          <input type="radio" name="drop1" id="id16" class="radio" />
+          <label for="id16">
+            <span class="material-symbols-outlined"> local_shipping </span>
+            <span class="name">Delivery</span>
           </label>
         </div>
       </div>
@@ -196,6 +236,24 @@
           input.click();
         });
       });
+
+      var label = document.querySelectorAll("label");
+      function search(searching) {
+        let searchVal = searching.value;
+        searchVal = searchVal.toUpperCase();
+        label.forEach((item) => {
+          let checkVal = item.querySelector(".name").innerHTML;
+          checkVal = checkVal.toUpperCase();
+
+          if (checkVal.indexOf(searchVal) == -1) {
+            item.style.display = "none";
+          } else {
+            item.style.display = "flex";
+          }
+          let list = input.nextElementSibling;
+          list.style.maxHeight = list.scrollHeight + "px";
+        });
+      }
     </script>
   </body>
 </html>
